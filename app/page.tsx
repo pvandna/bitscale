@@ -33,15 +33,11 @@ import {
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for sidebar visibility
-  const [autoSave, setAutoSave] = useState(false); // State for AutoSave toggle
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
   };
 
-  const handleAutoSaveToggle = () => {
-    setAutoSave(!autoSave);
-  };
 
   return (
     <div className="container mx-auto my-2 p-4 bg-gray-900 text-gray-800 rounded-lg">
@@ -87,32 +83,25 @@ export default function Home() {
       {/* <!-- Main Content --> */}
       <div className="bg-white rounded-lg shadow-lg">
 
-        <div className="flex  flex-row items-center justify-between p-4 border-b border-gray-200 gap-2">
-
-          <div className="flex items-center space-x-2 mb-2 md:mb-0">
+        <div className="flex  flex-row items-center justify-between p-2 border-b border-gray-200 gap-2">
+          <div className="flex items-center gap-1">
             <MdArrowBack className="text-gray-500 hover:text-gray-700 cursor-pointer" />
             <input
               type="text"
-              className="border-none focus:ring-0 focus:outline-none text-lg placeholder-gray-500 p-2 rounded-lg "
+              className="border-none focus:ring-0 focus:outline-none text-lg placeholder-gray-500 rounded-lg w-full"
               placeholder="Name of the file"
             />
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-1">
             <label className="inline-flex items-center cursor-pointer">
               <div className="relative">
-                <input
-                  type="checkbox"
-                  checked={autoSave}
-                  onChange={handleAutoSaveToggle}
-                  className="hidden"
-                />
-                <div className="toggle-path bg-green-500 w-12 h-6 rounded-full"></div>
-                <div className="toggle-circle bg-white w-6 h-6 rounded-full absolute top-0 left-0 transition transform"></div>
+                
+                <div className="toggle-path bg-green-500 w-8 h-4 rounded-full"></div>
+                <div className="toggle-circle bg-white w-4 h-4 rounded-full absolute top-0 left-0 transition transform"></div>
               </div>
-              <span className="ml-2 font-semibold text-green-500 hidden md:block">Auto Save</span>
+              <span className="ml-2 font-semibold text-green-500 text-sm hidden md:block">Auto Save</span>
             </label>
-            <MdAccountCircle className="text-xl hover:text-gray-400 cursor-pointer text-red-600 hidden lg:block" />
-            {/* <MdAccountCircle className="text-xl hover:text-gray-400 cursor-pointer text-red-600" /> */}
+            <MdAccountCircle className=" hover:text-gray-400 cursor-pointer text-red-600 hidden text-2xl lg:block" />
           </div>
 
 
@@ -141,26 +130,25 @@ export default function Home() {
                   <MdSearch className="text-gray-500 hover:text-gray-700 cursor-pointer" />
                   <input
                     type="text"
-                    className="border-none focus:ring-0 focus:outline-none placeholder-gray-500 bg-gray-100 p-1"
+                    className="border-none focus:ring-0 focus:outline-none placeholder-gray-500 bg-gray-100 w-full p-1"
                     placeholder="Search"
                   />
                 </div>
-                <div className="flex justify-between items-center gap-1">
-
-                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
-                    <  MdOutlineTableRows className="text-2xl text-black" />
+                <div className="flex justify-between items-center flex-wrap md:flex-nowrap md:gap-1 !text-sm">
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center items-center gap-1 w-1/2 sm:w-auto">
+                    <  MdOutlineTableRows className="text-black" />
                     <div className=" whitespace-nowrap">1/1Row </div>
                   </button>
-                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
-                    <  BsLayoutThreeColumns className="text-2xl text-black" />
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center items-center gap-1  w-1/2 sm:w-auto">
+                    <  BsLayoutThreeColumns className="text-black" />
                     <div className=" whitespace-nowrap">1/1Row </div>
                   </button>
-                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
-                    <  CiFilter className="text-2xl text-black" />
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center items-center gap-1  w-1/2 sm:w-auto">
+                    <  CiFilter className="text-black" />
                     <div className=" whitespace-nowrap">0 Filter </div>
                   </button>
-                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
-                    <  BiSortAlt2 className="text-2xl text-black" />
+                  <button className="p-2 px-2 rounded-lg  hover:bg-gray-300 flex justify-center items-center gap-1  w-1/2 sm:w-auto">
+                    <  BiSortAlt2 className="text-black " />
                     <div className=" whitespace-nowrap">sort </div>
                   </button>
                 </div>
