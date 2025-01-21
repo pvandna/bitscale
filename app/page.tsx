@@ -1,10 +1,14 @@
 "use client";
 import { useState } from "react";
-import { CiFilter ,CiPlay1 } from "react-icons/ci";
+import { CiFilter, CiPlay1 } from "react-icons/ci";
 import { BiSortAlt2 } from "react-icons/bi";
+import { GrShare } from "react-icons/gr";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { FaAppStoreIos } from "react-icons/fa6";
 import { AiOutlineOpenAI } from "react-icons/ai";
+import { RiLoader2Fill } from "react-icons/ri";
+import { IoWarningOutline } from "react-icons/io5";
+import { TbBrandFigma } from "react-icons/tb";
 import {
   BsStars,
   BsLayoutThreeColumns
@@ -23,7 +27,7 @@ import {
   MdDownload,
   MdShare,
   MdClose,
-  
+
   MdAdd
 } from "react-icons/md";
 
@@ -82,12 +86,14 @@ export default function Home() {
 
       {/* <!-- Main Content --> */}
       <div className="bg-white rounded-lg shadow-lg">
-        <div className="flex flex-col md:flex-row items-center justify-between p-4 border-b border-gray-200">
+
+        <div className="flex  flex-row items-center justify-between p-4 border-b border-gray-200 gap-2">
+
           <div className="flex items-center space-x-2 mb-2 md:mb-0">
             <MdArrowBack className="text-gray-500 hover:text-gray-700 cursor-pointer" />
             <input
               type="text"
-              className="border-none focus:ring-0 focus:outline-none text-lg placeholder-gray-500 bg-gray-100 p-2 rounded-lg"
+              className="border-none focus:ring-0 focus:outline-none text-lg placeholder-gray-500 p-2 rounded-lg "
               placeholder="Name of the file"
             />
           </div>
@@ -103,12 +109,15 @@ export default function Home() {
                 <div className="toggle-path bg-green-500 w-12 h-6 rounded-full"></div>
                 <div className="toggle-circle bg-white w-6 h-6 rounded-full absolute top-0 left-0 transition transform"></div>
               </div>
-              <span className="ml-2 font-semibold text-green-500">Auto Save</span>
+              <span className="ml-2 font-semibold text-green-500 hidden md:block">Auto Save</span>
             </label>
-
-            <MdAccountCircle className="text-xl hover:text-gray-400 cursor-pointer text-red-600" />
+            <MdAccountCircle className="text-xl hover:text-gray-400 cursor-pointer text-red-600 hidden lg:block" />
+            {/* <MdAccountCircle className="text-xl hover:text-gray-400 cursor-pointer text-red-600" /> */}
           </div>
+
+
         </div>
+
         <div className="flex gap-2">
           <div className="text-white border-r-2 border-gray-200 p-4 flex-col gap-2 items-center justify-between mb-4 lg:flex hidden">
             <div className="flex flex-col items-center space-x-2">
@@ -126,42 +135,37 @@ export default function Home() {
             </div>
           </div>
           <div className="p-4 w-full">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-2 mb-4">
-              <div className="relative mb-2 md:mb-0 flex flex-wrap gap-4 items-center justify-center md:justify-end">
-                <div className="flex items-center space-x-2 relative">
-                  <MdSearch className="absolute left-3 text-gray-500 hover:text-gray-700 cursor-pointer" />
+            <div className="flex flex-col md:flex-row items-center justify-between md:items-start   gap-2 mb-4">
+              <div className="mb-2 md:mb-0 flex flex-col lg:flex-row gap-4 items-center justify-center md:justify-end w-full md:w-auto">
+                <div className="flex items-center gap-2 w-full bg-gray-100 rounded-lg px-2 py-1">
+                  <MdSearch className="text-gray-500 hover:text-gray-700 cursor-pointer" />
                   <input
                     type="text"
-                    className="border-none focus:ring-0 focus:outline-none placeholder-gray-500 bg-gray-100 p-2 rounded-lg pl-10 pr-16"
+                    className="border-none focus:ring-0 focus:outline-none placeholder-gray-500 bg-gray-100 p-1"
                     placeholder="Search"
                   />
                 </div>
-                <button className=" px-4 py-1 rounded-lg hover:bg-gray-300">
-                  <div className="flex items-center space-x-2">
+                <div className="flex justify-between items-center gap-1">
+
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
                     <  MdOutlineTableRows className="text-2xl text-black" />
-                    <div className="ml-20">1/1Row </div>
-                  </div>
-                </button>
-                <button className=" px-4 py-1 rounded-lg hover:bg-gray-300">
-                  <div className="flex items-center space-x-2">
+                    <div className=" whitespace-nowrap">1/1Row </div>
+                  </button>
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
                     <  BsLayoutThreeColumns className="text-2xl text-black" />
-                    <div className="ml-20">1/1Row </div>
-                  </div>
-                </button>
-                <button className=" px-4 py-1 rounded-lg hover:bg-gray-300">
-                  <div className="flex items-center space-x-2">
+                    <div className=" whitespace-nowrap">1/1Row </div>
+                  </button>
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
                     <  CiFilter className="text-2xl text-black" />
-                    <div className="ml-20">0 Filter </div>
-                  </div>
-                </button>
-                <button className=" px-4 py-1 rounded-lg hover:bg-gray-300">
-                  <div className="flex items-center space-x-2">
+                    <div className=" whitespace-nowrap">0 Filter </div>
+                  </button>
+                  <button className="p-1 px-2 rounded-lg hover:bg-gray-300 flex justify-center flex-nowrap items-center gap-2">
                     <  BiSortAlt2 className="text-2xl text-black" />
-                    <div className="ml-20">sort </div>
-                  </div>
-                </button>
+                    <div className=" whitespace-nowrap">sort </div>
+                  </button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center justify-center md:justify-end">
+              <div className="flex flex-wrap gap-4 items-center justify-center md:justify-end md:py-1">
                 <button className="bg-black text-white px-4 py-1 rounded-lg hover:bg-blue-950">
                   <div className="flex items-center space-x-2">
                     < BsStars className="text-2xl text-white" />
@@ -184,14 +188,14 @@ export default function Home() {
 
                     </th>
                     <th className="py-2 px-4 text-left border-r border-gray-200 bg-yellow-200">
-                    <div className=" flex space-x-2 ">
+                      <div className=" flex space-x-2 ">
                         <FaAppStoreIos className=" text-2xl font-bold right-1 bottom-1 text-black" />
                         <span>Input Column</span>
 
                       </div>
                     </th>
                     <th className="py-2 px-4 text-left border-r border-gray-200">
-                    <div className=" flex space-x-2 ">
+                      <div className=" flex space-x-2 ">
                         <AiOutlineOpenAI className=" text-2xl font-bold right-1 bottom-1 text-black" />
                         <span>Action Column</span>
 
@@ -202,7 +206,7 @@ export default function Home() {
                         < MdBusiness className="text-2xl " />
                         <div className="ml-20">Enrich Company</div>
                       </div>
-                      <CiPlay1  className="font-bold " />
+                      <CiPlay1 className="font-bold " />
                     </th>
                     <th className="py-2 px-4 text-left">
                       <div className=" flex space-x-1">
@@ -228,7 +232,13 @@ export default function Home() {
                       Bitscale Evaluation - Account relev...
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Bitscale Evaluation - Account r...
+
+                      <div className=" flex space-x-1">
+                        <TbBrandFigma className=" text-1xl font-bold right-1 bottom-1 text-red-600" />
+                        <span>   Bitscale Evaluation - Account r...</span>
+
+                      </div>
+
                     </td>
                     <td className="py-2 px-4"></td>
                   </tr>
@@ -243,10 +253,20 @@ export default function Home() {
                       Oct 12, 2024 at 14:08 PM
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      cell data size exceeds limit
+
+                      <div className=" flex space-x-1">
+                        <IoWarningOutline className=" text-1xl font-bold right-1 bottom-1 text-red-600" />
+                        <span> cell data size exceeds limit</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      BMW Evaluation - Relevancy che...
+
+                      <div className=" flex space-x-1">
+                        <MdSave className=" text-1xl font-bold right-1 bottom-1 text-red-600" />
+                        <span>BMW Evaluation - Relevancy che...</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4"></td>
                   </tr>
@@ -261,15 +281,26 @@ export default function Home() {
                       Oct 12, 2024 at 14:08 PM
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      <a
-                        href="https://www.linkedin.com/bitscale"
-                        className="text-blue-500 hover:underline"
-                      >
-                        https://www.linkedin.com/bits...
-                      </a>
+
+
+                      <div className=" flex space-x-1 items-center ">
+                        <GrShare className=" text-base font-bold right-1 bottom-1 text-blue-500 " />
+                        <a
+                          href="https://www.linkedin.com/bitscale"
+                          className="text-blue-500 hover:underline"
+                        >
+                          https://www.linkedin.com/bits...
+                        </a>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Google Evaluation - Lilevancy...
+
+                      <div className=" flex space-x-1">
+                        <FaAppStoreIos className=" text-1xl font-bold right-1 bottom-1 text-red-600" />
+                        <span>   Google Evaluation - Lilevancy...</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4"></td>
                   </tr>
@@ -284,10 +315,18 @@ export default function Home() {
                       Oct 12, 2024 at 14:08 PM
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Loading data, Please wait
+                      <div className=" flex space-x-1">
+                        <RiLoader2Fill className=" text-2xl font-bold right-1 bottom-1 text-black" />
+                        <span> Loading data, Please wait </span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Apple Evaluation - Olvancy che...
+                      <div className=" flex space-x-1">
+                        <RiLoader2Fill className=" text-2xl font-bold right-1 bottom-1 text-black" />
+                        <span>Loading data, Please wait</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4"></td>
                   </tr>
@@ -302,10 +341,19 @@ export default function Home() {
                       Oct 12, 2024 at 14:08 PM
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Loading data, Please wait
+                      <div className=" flex space-x-1">
+                        <RiLoader2Fill className=" text-2xl font-bold right-1 bottom-1 text-black" />
+                        <span>Loading data, Please wait</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4 border-r border-gray-200">
-                      Figma Evaluation - Evancy che...
+
+                      <div className=" flex space-x-1">
+                        <TbBrandFigma className=" text-1xl font-bold right-1 bottom-1 text-red-600" />
+                        <span>   Figma Evaluation - Evancy che...</span>
+
+                      </div>
                     </td>
                     <td className="py-2 px-4"></td>
                   </tr>
@@ -404,11 +452,7 @@ export default function Home() {
                 </tbody>
               </table>
             </div>
-            {/* <div className="mt-4">
-              <button className="bg-gray-200 text-gray-700 px-4 py-1 rounded-lg hover:bg-gray-300">
-                Add Row
-              </button>
-            </div> */}
+
           </div>
         </div>
       </div>
